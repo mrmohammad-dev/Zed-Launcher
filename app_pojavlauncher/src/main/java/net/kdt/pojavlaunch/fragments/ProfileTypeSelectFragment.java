@@ -1,8 +1,5 @@
 package net.kdt.pojavlaunch.fragments;
 
-import static net.kdt.pojavlaunch.Tools.hasNoOnlineProfileDialog;
-import static net.kdt.pojavlaunch.Tools.hasOnlineProfile;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -11,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import net.kdt.pojavlaunch.PojavProfile;
 import net.kdt.pojavlaunch.R;
 import net.kdt.pojavlaunch.Tools;
 
@@ -52,8 +48,12 @@ public class ProfileTypeSelectFragment extends Fragment {
     }
 
     private void tryInstall(Class<? extends Fragment> fragmentClass, String tag){
-        if(!hasOnlineProfile()){
-            hasNoOnlineProfileDialog(requireActivity());
+        // Match PojavLauncher behavior: local profiles are for offline play.
+        // Modloader installers are kept behind an online, licensed game profile.
+        if (Tools.isDemoProfile(requireContext())) {
+            Toast.makeText(requireContext(), R.string.toast_not_available_demo, Toast.LENGTH_LONG).show();
+        } else if (Tools.isLocalProfile(requireContext())) {
+            Toast.makeText(requireContext(), R.string.zed_local_modded_profile_unavailable, Toast.LENGTH_LONG).show();
         } else {
             Tools.swapFragment(requireActivity(), fragmentClass, tag, null);
         }

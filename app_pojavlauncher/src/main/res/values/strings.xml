@@ -16,6 +16,7 @@
     <string name="zed_profile_title" translatable="false">GAME PROFILE</string>
     <string name="zed_play_button" translatable="false">LAUNCH MINECRAFT</string>
     <string name="zed_source_code" translatable="false">Project</string>
+    <string name="zed_local_modded_profile_unavailable" translatable="false">Local Accounts are for offline play with Minecraft versions already installed. Installing OptiFine, Fabric, Forge or custom JARs requires an online Microsoft account that owns Minecraft: Java Edition.</string>
 
     <!-- Action bar part -->
 

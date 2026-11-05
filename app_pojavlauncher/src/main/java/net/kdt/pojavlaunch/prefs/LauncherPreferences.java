@@ -77,8 +77,18 @@ public class LauncherPreferences {
 
 
     public static void loadPreferences(Context ctx) {
-        //Required for CTRLDEF_FILE and MultiRT
+        // Required for CTRLDEF_FILE and MultiRT.
         Tools.initStorageConstants(ctx);
+
+        // Zed has its own storage root. Seed the bundled default controls file
+        // on first launch so Custom Controls works before any user layout is saved.
+        if (!FileUtils.exists(Tools.CTRLDEF_FILE)) {
+            try {
+                Tools.copyAssetFile(ctx, "default.json", Tools.CTRLMAP_PATH, false);
+            } catch (IOException e) {
+                Log.e("LauncherPreferences", "Failed to create default custom controls layout", e);
+            }
+        }
         boolean isDevicePowerful = isDevicePowerful(ctx);
 
         PREF_BUTTONSIZE = DEFAULT_PREF.getInt("buttonscale", 100);
