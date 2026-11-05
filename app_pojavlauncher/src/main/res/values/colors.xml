@@ -3,13 +3,28 @@
     <color name="control_button_color">#4CC4C4C4</color>
     <color name="control_button_pressed_color">#4D000000</color>
 
-    <color name="minebutton_color">#9649b8</color>
-    <color name="background_app">#181818</color>
-    <color name="divider">@color/background_overlay</color>
-    <color name="background_overlay">#464646</color>
-    <color name="background_status_bar">#242424</color>
-    <color name="background_bottom_bar">#232323</color>
+    <!-- Zed brand palette -->
+    <color name="minebutton_color">#FFC928</color>
+    <color name="background_app">#101114</color>
+    <color name="background_status_bar">#0A0B0D</color>
+    <color name="background_bottom_bar">#191B20</color>
+    <color name="background_overlay">#303238</color>
+    <color name="divider">#35373D</color>
 
-    <color name="primary_text">#FFFFFF</color>
-    <color name="secondary_text">#B2B2B2</color>
+    <color name="zed_accent">#FFC928</color>
+    <color name="zed_accent_deep">#E89A16</color>
+    <color name="zed_ripple">#44FFC928</color>
+    <color name="zed_ripple_dark">#330E0B04</color>
+    <color name="zed_surface">#1B1D22</color>
+    <color name="zed_surface_elevated">#24272D</color>
+    <color name="zed_surface_pressed">#302A1A</color>
+    <color name="zed_outline">#41434A</color>
+    <color name="zed_outline_accent">#70551B</color>
+    <color name="zed_text_primary">#FFF9EA</color>
+    <color name="zed_text_secondary">#B9B4A8</color>
+    <color name="zed_text_dark">#201806</color>
+    <color name="zed_accent_divider">#554A2A16</color>
+
+    <color name="primary_text">#FFF9EA</color>
+    <color name="secondary_text">#B9B4A8</color>
 </resources>

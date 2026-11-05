@@ -3,6 +3,20 @@
     <!-- App name part -->
     <string name="app_name" translatable="false">Zed Launcher</string>
 
+    <!-- Zed Launcher home screen -->
+    <string name="zed_toolbar_title" translatable="false">ZED</string>
+    <string name="zed_toolbar_subtitle" translatable="false">JAVA LAUNCHER</string>
+    <string name="zed_home_title" translatable="false">READY TO PLAY?</string>
+    <string name="zed_home_subtitle" translatable="false">MINECRAFT JAVA EDITION</string>
+    <string name="zed_home_badge" translatable="false">ZED MOBILE</string>
+    <string name="zed_welcome_kicker" translatable="false">YOUR NEXT WORLD STARTS HERE</string>
+    <string name="zed_welcome_title" translatable="false">Your world. Your rules.</string>
+    <string name="zed_welcome_description" translatable="false">Choose a profile, adjust your setup and jump into Minecraft.</string>
+    <string name="zed_tools_title" translatable="false">QUICK ACCESS</string>
+    <string name="zed_profile_title" translatable="false">GAME PROFILE</string>
+    <string name="zed_play_button" translatable="false">LAUNCH MINECRAFT</string>
+    <string name="zed_source_code" translatable="false">Project</string>
+
     <!-- Action bar part -->
 
     <!-- Languages list part -->
