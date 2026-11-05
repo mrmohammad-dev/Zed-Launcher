@@ -122,8 +122,8 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customDebug
-            resValue "string", "app_name", "(Debug) Zed Launcher"
-            resValue "string", "app_short_name", "(Debug) Zed Launcher"
+            resValue "string", "app_name", "Zed Launcher"
+            resValue "string", "app_short_name", "Zed Launcher"
             resValue 'string', 'application_package', 'dev.mrmohammad.zedlauncher.debug'
             resValue 'string', 'storageProviderAuthorities', 'dev.mrmohammad.zedlauncher.debug.scoped.gamefolder'
             resValue 'string', 'shareProviderAuthority', 'dev.mrmohammad.zedlauncher.debug.scoped.controlfolder'
