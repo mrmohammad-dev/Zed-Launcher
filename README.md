@@ -1,22 +1,22 @@
-<h1 align="center">Angel Aura Amethyst</h1>
+<h1 align="center">Zed Launcher</h1>
 
-<img src="https://github.com/AngelAuraMC/Amethyst-Android/blob/v3_openjdk/app_pojavlauncher/src/main/assets/amethyst.png" align="left" width="130" height="130" alt="Amethyst logo">
+<img src="https://github.com/mrmohammad-dev/Zed-Launcher/blob/v3_openjdk/app_pojavlauncher/src/main/assets/zed-logo.png" align="left" width="130" height="130" alt="Zed Launcher logo">
 
-[![Android CI](https://github.com/AngelAuraMC/Amethyst-Android/workflows/Android%20CI/badge.svg)](https://github.com/AngelAuraMC/Amethyst-Android/actions)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AngelAuraMC/Amethyst-Android)](https://github.com/AngelAuraMC/Amethyst-Android/actions)
+[![Android CI](https://github.com/mrmohammad-dev/Zed-Launcher/workflows/Android%20CI/badge.svg)](https://github.com/mrmohammad-dev/Zed-Launcher/actions)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mrmohammad-dev/Zed-Launcher)](https://github.com/mrmohammad-dev/Zed-Launcher/actions)
 [![Crowdin](https://badges.crowdin.net/pojavlauncher/localized.svg)](https://crowdin.com/project/pojavlauncher)
 [![Discord](https://img.shields.io/discord/724163890803638273.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/5ptqkyZxEy)
 
-*From [Boardwalk](https://github.com/zhuowei/Boardwalk)'s ashes and [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)'s ruined reputation, here comes Amethyst!*
+*Zed Launcher is an independently branded Android fork of Amethyst, itself based on PojavLauncher and Boardwalk.*
 
-Amethyst is a launcher that allows you to play Minecraft: Java Edition on your Android and [iOS](https://github.com/AngelAuraMC/Amethyst-iOS) devices.
+Zed Launcher is a standalone Android launcher for Minecraft: Java Edition, based on [Amethyst](https://github.com/AngelAuraMC/Amethyst-Android), [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) and [Boardwalk](https://github.com/zhuowei/Boardwalk).
 
 For more details, check out our [wiki](https://wiki.angelauramc.dev)!
 
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Getting Amethyst](#getting-amethyst)
+* [Getting Zed Launcher](#getting-zed-launcher)
 * [Building](#building)
     * [Quick Build (Recommended)](#quick-build-recommended)
     * [Detailed Build](#detailed-build)
@@ -31,25 +31,25 @@ For more details, check out our [wiki](https://wiki.angelauramc.dev)!
 
 ## Introduction
 
-* Amethyst is a Minecraft: Java Edition launcher for Android and iOS based on [Boardwalk](https://github.com/zhuowei/Boardwalk) and [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher)
+* Zed Launcher is an independently branded Android fork of [Amethyst](https://github.com/AngelAuraMC/Amethyst-Android).
 * This launcher can launch almost all available Minecraft versions ranging from rd-132211 to 26.3-snapshot-1.
 * Modding via Forge and Fabric are also supported.
-* This repository contains source code for Android. For iOS/iPadOS, check out [Amethyst-iOS](https://github.com/AngelAuraMC/Amethyst-iOS).
+* This repository contains the Android source code for Zed Launcher.
 
-## Getting Amethyst
+## Getting Zed Launcher
 
-You can get Amethyst via two methods:
+You can get Zed Launcher via the following methods:
 
-1. **Releases:** Download the latest prebuilt app from [nightly.link](https://nightly.link/AngelAuraMC/Amethyst-Android/workflows/android/v3_openjdk/app-debug%20%28recommended%29.zip) or select an older version from our [automatic builds](https://github.com/AngelAuraMC/Amethyst-Android/actions).
+1. **Build artifacts:** Open [GitHub Actions](https://github.com/mrmohammad-dev/Zed-Launcher/actions), select a successful workflow run, and download its APK artifact.
 2. **Build from Source:** Follow the [building instructions](#building) below.
 
 ## Building
 
 ### Quick Build (Recommended)
 
-The easiest way to build Amethyst is to use the pre-built JREs provided by our CI.
+The easiest way to build Zed Launcher is to use the pre-built JREs provided by upstream CI.
 
-1. Clone the repository: `git clone --recursive https://github.com/AngelAuraMC/Amethyst-Android.git`
+1. Clone the repository: `git clone --recursive https://github.com/mrmohammad-dev/Zed-Launcher.git`
 2. Build the launcher: `./gradlew :app_pojavlauncher:assembleDebug` (Use `gradlew.bat` on Windows)
 
 The built APK will be located in `app_pojavlauncher/build/outputs/apk/debug/`.
@@ -96,7 +96,7 @@ If you need more control over the build process, follow these steps:
 
 ## Known Issues
 
-See our [issue tracker](https://github.com/AngelAuraMC/Amethyst-Android/issues) for a list of known issues and their current status.
+See the [Zed Launcher issue tracker](https://github.com/mrmohammad-dev/Zed-Launcher/issues) for a list of known issues and their current status.
 
 ## FAQ
 
@@ -114,7 +114,7 @@ For support, please join our [Discord server](https://discord.gg/5ptqkyZxEy).
 
 ## License
 
-Amethyst is licensed under [GNU LGPLv3](https://github.com/AngelAuraMC/Amethyst-Android/blob/v3_openjdk/LICENSE).
+Zed Launcher is distributed under the GNU LGPLv3. See the repository [LICENSE](https://github.com/mrmohammad-dev/Zed-Launcher/blob/v3_openjdk/LICENSE) file.
 
 ## Credits & Dependencies
 
@@ -150,4 +150,4 @@ Future plans include:
 * Improving stability and performance.
 * Enhancing the mod installation experience.
 
-We welcome community feedback and suggestions for our roadmap.  Please feel free to open a feature request in our [issue tracker](https://github.com/AngelAuraMC/Amethyst-Android/issues).
+We welcome community feedback and suggestions for our roadmap.  Please open feature requests in the [Zed Launcher issue tracker](https://github.com/mrmohammad-dev/Zed-Launcher/issues).
