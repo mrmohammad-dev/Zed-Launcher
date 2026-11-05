@@ -50,6 +50,7 @@ public abstract class FabriclikeInstallFragment extends Fragment implements Modl
     private Button mStartButton;
     private View mRetryView;
     private CheckBox mOnlyStableCheckbox;
+    private boolean mLocalProfile;
     protected FabriclikeInstallFragment(FabriclikeUtils mFabriclikeUtils, String mFragmentTag) {
         super(R.layout.fragment_fabric_install);
         this.mFabriclikeUtils = mFabriclikeUtils;
@@ -64,6 +65,7 @@ public abstract class FabriclikeInstallFragment extends Fragment implements Modl
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mLocalProfile = Tools.isLocalProfile(requireContext());
         mStartButton = view.findViewById(R.id.fabric_installer_start_button);
         mStartButton.setOnClickListener(this::onClickStart);
         mGameVersionSpinner = view.findViewById(R.id.fabric_installer_game_ver_spinner);
@@ -113,7 +115,7 @@ public abstract class FabriclikeInstallFragment extends Fragment implements Modl
         mStartButton.setEnabled(false);
         mRetryView.setVisibility(View.GONE);
         mLoaderVersionSpinner.setAdapter(null);
-        if(mGameVersionArray == null) {
+        if(mGameVersionArray == null || (mLocalProfile && mGameVersionArray.length == 0)) {
             mGameVersionSpinner.setAdapter(null);
             updateGameVersions();
             return;
@@ -268,6 +270,13 @@ public abstract class FabriclikeInstallFragment extends Fragment implements Modl
         public void run(Future<?> myFuture) {
             try {
                 mGameVersionArray = mFabriclikeUtils.downloadGameVersions();
+                if (mLocalProfile && mGameVersionArray != null) {
+                    ArrayList<FabricVersion> installedVersions = new ArrayList<>();
+                    for (FabricVersion version : mGameVersionArray) {
+                        if (Tools.isMinecraftVersionInstalled(version.version)) installedVersions.add(version);
+                    }
+                    mGameVersionArray = installedVersions.toArray(new FabricVersion[0]);
+                }
                 if(mGameVersionArray != null) onFinished(myFuture);
                 else onException(myFuture, null);
             }catch (IOException e) {
@@ -279,6 +288,15 @@ public abstract class FabriclikeInstallFragment extends Fragment implements Modl
                 if(myFuture.isCancelled()) return;
                 stopLoading();
                 updateGameSpinner();
+                if (mLocalProfile && mGameVersionArray.length == 0) {
+                    mSelectedGameVersion = null;
+                    mSelectedLoaderVersion = null;
+                    mLoaderVersionSpinner.setAdapter(null);
+                    mStartButton.setEnabled(false);
+                    TextView retryMessage = mRetryView.findViewById(R.id.fabric_installer_retry_message);
+                    if (retryMessage != null) retryMessage.setText(R.string.zed_local_no_matching_version);
+                    mRetryView.setVisibility(View.VISIBLE);
+                }
             });
         }
     }

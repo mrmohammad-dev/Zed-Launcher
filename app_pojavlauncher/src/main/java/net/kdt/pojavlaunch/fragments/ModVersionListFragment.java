@@ -23,9 +23,11 @@ import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public abstract class ModVersionListFragment<T> extends Fragment implements Runnable, View.OnClickListener, ExpandableListView.OnChildClickListener, ModloaderDownloadListener {
     private final String mExtraTag;
+    protected boolean mLocalProfile;
     private ExpandableListView mExpandableListView;
     private ProgressBar mProgressBar;
     private LayoutInflater mInflater;
@@ -45,6 +47,7 @@ public abstract class ModVersionListFragment<T> extends Fragment implements Runn
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mLocalProfile = Tools.isLocalProfile(requireContext());
         ((TextView)view.findViewById(R.id.title_textview)).setText(getTitleText());
         mProgressBar = view.findViewById(R.id.mod_dl_list_progress);
         mExpandableListView = view.findViewById(R.id.mod_dl_expandable_version_list);
@@ -70,11 +73,16 @@ public abstract class ModVersionListFragment<T> extends Fragment implements Runn
     public void run() {
         try {
             T versions = loadVersionList();
+            final boolean noCompatibleLocalVersions = mLocalProfile && isVersionListEmpty(versions);
             Tools.runOnUiThread(()->{
-                if(versions != null) {
+                if(versions != null && !noCompatibleLocalVersions) {
                     mExpandableListView.setAdapter(createAdapter(versions, mInflater));
                 }else{
                     mRetryView.setVisibility(View.VISIBLE);
+                    if (noCompatibleLocalVersions) {
+                        TextView retryMessage = mRetryView.findViewById(R.id.mod_dl_retry_message);
+                        if (retryMessage != null) retryMessage.setText(R.string.zed_local_no_matching_version);
+                    }
                 }
                 mProgressBar.setVisibility(View.GONE);
             });
@@ -158,6 +166,10 @@ public abstract class ModVersionListFragment<T> extends Fragment implements Runn
 
     private ModloaderListenerProxy getTaskProxy() {
         return (ModloaderListenerProxy) ExtraCore.getValue(mExtraTag);
+    }
+
+    protected boolean isVersionListEmpty(T versions) {
+        return versions instanceof List && ((List<?>) versions).isEmpty();
     }
 
     public abstract int getTitleText();

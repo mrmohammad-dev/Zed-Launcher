@@ -663,6 +663,35 @@ public final class Tools {
         return new File(Tools.DIR_GAME_NEW);
     }
 
+    /** True only when both the vanilla version metadata and its client JAR are installed locally. */
+    public static boolean isMinecraftVersionInstalled(String versionId) {
+        if (versionId == null || versionId.trim().isEmpty() || DIR_HOME_VERSION == null) return false;
+        File versionDirectory = new File(DIR_HOME_VERSION, versionId);
+        File versionJson = new File(versionDirectory, versionId + ".json");
+        File versionJar = new File(versionDirectory, versionId + ".jar");
+        if (!versionJson.isFile() || versionJson.length() == 0 || !versionJar.isFile() || versionJar.length() == 0) {
+            return false;
+        }
+        try {
+            JMinecraftVersionList.Version metadata = GLOBAL_GSON.fromJson(
+                    read(versionJson.getAbsolutePath()), JMinecraftVersionList.Version.class);
+            return metadata != null && metadata.inheritsFrom == null;
+        } catch (Exception e) {
+            Log.w("ZedLauncher", "Could not verify local vanilla version " + versionId, e);
+            return false;
+        }
+    }
+
+    public static boolean hasInstalledVanillaVersions() {
+        if (DIR_HOME_VERSION == null) return false;
+        File[] versionDirectories = new File(DIR_HOME_VERSION).listFiles();
+        if (versionDirectories == null) return false;
+        for (File versionDirectory : versionDirectories) {
+            if (versionDirectory.isDirectory() && isMinecraftVersionInstalled(versionDirectory.getName())) return true;
+        }
+        return false;
+    }
+
     public static void buildNotificationChannel(Context context){
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return;
         NotificationChannel channel = new NotificationChannel(

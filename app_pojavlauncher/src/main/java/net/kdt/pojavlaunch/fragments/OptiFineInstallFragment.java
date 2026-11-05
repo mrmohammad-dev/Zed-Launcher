@@ -7,6 +7,7 @@ import android.widget.ExpandableListAdapter;
 
 import net.kdt.pojavlaunch.JavaGUILauncherActivity;
 import net.kdt.pojavlaunch.R;
+import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.modloaders.ModloaderListenerProxy;
 import net.kdt.pojavlaunch.modloaders.OptiFineDownloadTask;
 import net.kdt.pojavlaunch.modloaders.OptiFineUtils;
@@ -14,6 +15,7 @@ import net.kdt.pojavlaunch.modloaders.OptiFineVersionListAdapter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OptiFineInstallFragment extends ModVersionListFragment<OptiFineUtils.OptiFineVersions> {
     public static final String TAG = "OptiFineInstallFragment";
@@ -31,7 +33,25 @@ public class OptiFineInstallFragment extends ModVersionListFragment<OptiFineUtil
     }
     @Override
     public OptiFineUtils.OptiFineVersions loadVersionList() throws IOException {
-        return OptiFineUtils.downloadOptiFineVersions();
+        OptiFineUtils.OptiFineVersions versions = OptiFineUtils.downloadOptiFineVersions();
+        if (versions == null || !mLocalProfile || versions.minecraftVersions == null || versions.optifineVersions == null) return versions;
+
+        OptiFineUtils.OptiFineVersions installedOnly = new OptiFineUtils.OptiFineVersions();
+        installedOnly.minecraftVersions = new ArrayList<>();
+        installedOnly.optifineVersions = new ArrayList<>();
+        for (int i = 0; i < versions.minecraftVersions.size(); i++) {
+            String gameVersion = versions.minecraftVersions.get(i);
+            if (Tools.isMinecraftVersionInstalled(gameVersion)) {
+                installedOnly.minecraftVersions.add(gameVersion);
+                installedOnly.optifineVersions.add(versions.optifineVersions.get(i));
+            }
+        }
+        return installedOnly;
+    }
+
+    @Override
+    protected boolean isVersionListEmpty(OptiFineUtils.OptiFineVersions versions) {
+        return versions != null && (versions.minecraftVersions == null || versions.minecraftVersions.isEmpty());
     }
 
     @Override

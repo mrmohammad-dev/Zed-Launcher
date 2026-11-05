@@ -17,6 +17,7 @@ import net.kdt.pojavlaunch.modloaders.ModloaderListenerProxy;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForgeInstallFragment extends ModVersionListFragment<List<String>> {
@@ -42,7 +43,16 @@ public class ForgeInstallFragment extends ModVersionListFragment<List<String>> {
 
     @Override
     public List<String> loadVersionList() throws IOException {
-        return ForgeUtils.downloadForgeVersions();
+        List<String> versions = ForgeUtils.downloadForgeVersions();
+        if (versions == null || !mLocalProfile) return versions;
+        List<String> installedOnly = new ArrayList<>();
+        for (String version : versions) {
+            int separator = version.indexOf('-');
+            if (separator > 0 && Tools.isMinecraftVersionInstalled(version.substring(0, separator))) {
+                installedOnly.add(version);
+            }
+        }
+        return installedOnly;
     }
 
     @Override

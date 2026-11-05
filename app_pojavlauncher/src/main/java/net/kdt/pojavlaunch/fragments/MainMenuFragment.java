@@ -48,10 +48,10 @@ public class MainMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Button mNewsButton = view.findViewById(R.id.news_button);
         Button mDiscordButton = view.findViewById(R.id.discord_button);
-        Button mCustomControlButton = view.findViewById(R.id.custom_control_button);
+        View mCustomControlButton = view.findViewById(R.id.custom_control_button);
         Button mInstallJarButton = view.findViewById(R.id.install_jar_button);
         Button mShareLogsButton = view.findViewById(R.id.share_logs_button);
-        Button mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
+        View mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
 
         ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
         Button mPlayButton = view.findViewById(R.id.play_button);
@@ -89,8 +89,16 @@ public class MainMenuFragment extends Fragment {
                 Toast.makeText(v.getContext(), R.string.toast_not_available_demo, Toast.LENGTH_LONG).show();
                 return;
             }
-            // Local accounts can browse their own game directory while playing offline.
-            openPath(v.getContext(), getCurrentProfileDirectory(), false);
+            File gameDirectory = getCurrentProfileDirectory();
+            if (!gameDirectory.exists() && !gameDirectory.mkdirs()) {
+                Toast.makeText(v.getContext(), R.string.zed_game_dir_create_failed, Toast.LENGTH_LONG).show();
+                return;
+            }
+            try {
+                openPath(v.getContext(), gameDirectory, false);
+            } catch (Exception e) {
+                Tools.showError(v.getContext(), e);
+            }
         });
 
 
@@ -120,8 +128,9 @@ public class MainMenuFragment extends Fragment {
             Toast.makeText(requireContext(), R.string.toast_not_available_demo, Toast.LENGTH_LONG).show();
             return;
         }
-        if (Tools.isLocalProfile(requireContext())) {
-            Toast.makeText(requireContext(), R.string.zed_local_modded_profile_unavailable, Toast.LENGTH_LONG).show();
+        if (Tools.isLocalProfile(requireContext()) && !Tools.hasInstalledVanillaVersions()) {
+            Tools.dialog(requireContext(), getString(R.string.global_warning),
+                    getString(R.string.zed_local_no_vanilla_version));
             return;
         }
         if (ProgressKeeper.getTaskCount() == 0)

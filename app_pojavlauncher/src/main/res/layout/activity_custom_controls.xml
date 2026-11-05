@@ -7,58 +7,88 @@
     android:layout_height="match_parent"
     android:background="@color/background_app">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_app">
 
         <net.kdt.pojavlaunch.customcontrols.ControlLayout
             android:id="@+id/customctrl_controllayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <net.kdt.pojavlaunch.customcontrols.handleview.DrawerPullButton
-            android:id="@+id/drawer_button"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:padding="6dp"
-            android:elevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!-- Compact Zed editor bar; the control canvas remains full-screen behind it. -->
+        <LinearLayout
+            android:id="@+id/zed_control_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_gravity="top"
+            android:background="@drawable/zed_editor_toolbar"
+            android:elevation="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/zed_status_chip"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
-            android:text="@string/hint_control_mapping"
-            android:textColor="@color/zed_text_primary"
-            android:textSize="10sp"
-            android:elevation="9dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/drawer_button"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/zed_action_button"
+                android:contentDescription="@string/zed_controls_menu"
+                android:elevation="2dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_menu_settings"
+                android:tint="@color/zed_accent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.09"
+                    android:text="ZED CONTROL STUDIO"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/hint_control_mapping"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/zed_status_chip"
+                android:paddingStart="9dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="9dp"
+                android:paddingBottom="5dp"
+                android:text="EDIT MODE"
+                android:textColor="@color/zed_accent"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
 
     <ListView
         android:id="@+id/customctrl_navigation_view"
-        android:layout_width="240dp"
+        android:layout_width="276dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/zed_surface"
         android:divider="@color/zed_outline"
         android:dividerHeight="1dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:fitsSystemWindows="false" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

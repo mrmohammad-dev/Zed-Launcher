@@ -39,7 +39,7 @@ public class CustomControlsActivity extends BaseActivity implements EditorExitab
 		mPullDrawerButton.setOnClickListener(v -> mDrawerLayout.openDrawer(mDrawerNavigationView));
 		mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
-		mDrawerNavigationView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.menu_customcontrol_customactivity)));
+		mDrawerNavigationView.setAdapter(new ArrayAdapter<>(this, R.layout.zed_control_menu_item, getResources().getStringArray(R.array.menu_customcontrol_customactivity)));
 		mDrawerNavigationView.setOnItemClickListener((parent, view, position, id) -> {
 			switch(position) {
 				case 0: mControlLayout.addControlButton(new ControlData("New")); break;
@@ -57,8 +57,6 @@ public class CustomControlsActivity extends BaseActivity implements EditorExitab
 						shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
 						shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 						shareIntent.setType("application/json");
-						startActivity(shareIntent);
-
 						Intent sendIntent = Intent.createChooser(shareIntent, mControlLayout.mLayoutFileName);
 						startActivity(sendIntent);
 					}catch (Exception e) {

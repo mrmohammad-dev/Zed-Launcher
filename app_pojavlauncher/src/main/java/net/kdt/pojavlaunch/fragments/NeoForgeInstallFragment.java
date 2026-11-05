@@ -61,7 +61,23 @@ public class NeoForgeInstallFragment extends ModVersionListFragment<List<String>
 
     @Override
     public List<String> loadVersionList() {
-        return downloadNeoForgeVersions();
+        List<String> versions = downloadNeoForgeVersions();
+        if (versions == null || !mLocalProfile) return versions;
+        List<String> installedOnly = new java.util.ArrayList<>();
+        for (String version : versions) {
+            String[] parts = version.split("\\.");
+            if (parts.length < 2) continue;
+            String gameVersion;
+            try {
+                gameVersion = Integer.parseInt(parts[1]) < 25
+                        ? "1." + parts[0] + "." + parts[1]
+                        : parts[0] + "." + parts[1];
+            } catch (NumberFormatException ignored) {
+                gameVersion = parts[0] + "." + parts[1];
+            }
+            if (Tools.isMinecraftVersionInstalled(gameVersion)) installedOnly.add(version);
+        }
+        return installedOnly;
     }
 
     public static List<String> downloadNeoForgeVersions() {

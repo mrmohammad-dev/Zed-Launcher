@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_menu_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,14 +14,14 @@
         android:clipToPadding="false"
         android:fillViewport="false"
         android:overScrollMode="never"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="8dp"
+        android:paddingStart="18dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/zed_bottom_panel"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/zed_bottom_panel">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,12 +31,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/zed_welcome_card"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:minHeight="92dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
-                    android:layout_width="58dp"
-                    android:layout_height="58dp"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitCenter"
                     android:src="@mipmap/ic_launcher" />
@@ -48,166 +50,161 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.02"
-                        android:text="@string/zed_home_title"
-                        android:textColor="@color/zed_accent"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:letterSpacing="0.07"
-                        android:text="@string/zed_home_subtitle"
-                        android:textColor="@color/zed_text_primary"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/zed_status_chip"
-                        android:paddingStart="8dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="8dp"
-                        android:paddingBottom="3dp"
+                        android:letterSpacing="0.12"
                         android:text="@string/zed_home_badge"
                         android:textColor="@color/zed_accent"
                         android:textSize="8sp"
                         android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="ZED LAUNCHER"
+                        android:textColor="@color/zed_text_primary"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/zed_home_subtitle"
+                        android:textColor="@color/zed_text_secondary"
+                        android:textSize="9sp" />
                 </LinearLayout>
 
-                <LinearLayout
+                <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.2"
-                    android:background="@drawable/zed_welcome_card"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:text="@string/zed_welcome_description"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:letterSpacing="0.12"
+                android:text="@string/zed_tools_title"
+                android:textColor="@color/zed_accent"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/custom_control_button"
+                    android:layout_width="0dp"
+                    android:layout_height="116dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/zed_feature_card_primary"
+                    android:clickable="true"
+                    android:contentDescription="@string/zed_custom_controls_title"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
                     android:orientation="vertical"
                     android:padding="12dp">
-
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_menu_custom_controls"
+                        android:tint="@color/zed_accent" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/zed_welcome_kicker"
-                        android:textColor="@color/zed_accent"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/zed_welcome_title"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/zed_custom_controls_title"
                         android:textColor="@color/zed_text_primary"
-                        android:textSize="15sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="@string/zed_welcome_description"
+                        android:text="@string/zed_custom_controls_subtitle"
                         android:textColor="@color/zed_text_secondary"
-                        android:textSize="9sp" />
+                        android:textSize="8sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/open_files_button"
+                    android:layout_width="0dp"
+                    android:layout_height="116dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/zed_feature_card_secondary"
+                    android:clickable="true"
+                    android:contentDescription="@string/zed_game_directory_title"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_folder"
+                        android:tint="@color/zed_accent" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/zed_game_directory_title"
+                        android:textColor="@color/zed_text_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/zed_game_directory_subtitle"
+                        android:textColor="@color/zed_text_secondary"
+                        android:textSize="8sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0.12"
-                    android:text="@string/zed_tools_title"
-                    android:textColor="@color/zed_accent"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@color/zed_outline" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
-
                 <com.kdt.mcgui.LauncherMenuButton
                     android:id="@+id/news_button"
                     style="@style/LauncherMenuButton.Zed"
                     android:layout_width="0dp"
-                    android:layout_height="54dp"
+                    android:layout_height="52dp"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
                     android:drawableStart="@drawable/ic_menu_news"
                     android:text="@string/zed_source_code" />
-
-                <com.kdt.mcgui.LauncherMenuButton
-                    android:id="@+id/custom_control_button"
-                    style="@style/LauncherMenuButton.Zed"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_menu_custom_controls"
-                    android:text="@string/mcl_option_customcontrol" />
-
                 <com.kdt.mcgui.LauncherMenuButton
                     android:id="@+id/install_jar_button"
                     style="@style/LauncherMenuButton.Zed"
                     android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_height="52dp"
+                    android:layout_marginHorizontal="5dp"
                     android:layout_weight="1"
                     android:drawableStart="@drawable/ic_menu_install_jar"
                     android:text="@string/main_install_jar_file" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal">
-
-                <com.kdt.mcgui.LauncherMenuButton
-                    android:id="@+id/open_files_button"
-                    style="@style/LauncherMenuButton.Zed"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_folder"
-                    android:text="@string/mcl_button_open_directory" />
-
                 <com.kdt.mcgui.LauncherMenuButton
                     android:id="@+id/share_logs_button"
                     style="@style/LauncherMenuButton.Zed"
                     android:layout_width="0dp"
-                    android:layout_height="54dp"
+                    android:layout_height="52dp"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:drawableStart="@android:drawable/ic_menu_share"
                     android:text="@string/main_share_logs" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -224,7 +221,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/zed_bottom_panel"
-        android:elevation="8dp"
+        android:elevation="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="14dp"
@@ -240,27 +237,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:letterSpacing="0.1"
+                android:letterSpacing="0.12"
                 android:text="@string/zed_profile_title"
                 android:textColor="@color/zed_accent"
                 android:textSize="9sp"
                 android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
                 <com.kdt.mcgui.mcVersionSpinner
                     android:id="@+id/mc_version_spinner"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_height="46dp"
                     android:layout_weight="1"
                     android:background="@drawable/zed_profile_selector"
                     android:drawableEnd="@drawable/spinner_arrow"
@@ -269,32 +263,29 @@
                     app:drawableEndSize="@dimen/_16sdp"
                     app:drawableStartIntegerScaling="true"
                     app:drawableStartSize="@dimen/_30sdp" />
-
                 <ImageButton
                     android:id="@+id/edit_profile_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:layout_marginStart="7dp"
                     android:background="@drawable/zed_action_button"
                     android:contentDescription="@string/zed_profile_title"
-                    android:padding="12dp"
+                    android:padding="11dp"
                     android:src="@drawable/ic_edit_profile"
                     android:tint="@color/zed_accent" />
             </LinearLayout>
         </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/play_button"
-            android:layout_width="190dp"
-            android:layout_height="54dp"
+            android:layout_width="180dp"
+            android:layout_height="52dp"
             android:layout_marginStart="12dp"
             android:background="@drawable/zed_play_button_background"
             android:fontFamily="sans"
             android:text="@string/zed_play_button"
             android:textAllCaps="true"
             android:textColor="@color/zed_text_dark"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

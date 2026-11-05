@@ -1,153 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kdt.DefocusableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app">
+    android:background="@color/background_app"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="24dp">
 
-        android:paddingHorizontal="@dimen/fragment_padding_medium"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/zed_welcome_card"
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.14"
+                android:text="ZED / PROFILE BUILDER"
+                android:textColor="@color/zed_accent"
+                android:textSize="9sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/title_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/create_profile_vanilla_like_versions"
+                android:textColor="@color/zed_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <!-- Vanilla like version -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/zed_profile_builder_subtitle"
+                android:textColor="@color/zed_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/title_textview"
-            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_profile_vanilla_like_versions"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/padding_large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+            android:layout_marginTop="18dp"
+            android:letterSpacing="0.12"
+            android:text="@string/zed_profile_group_vanilla"
+            android:textColor="@color/zed_accent"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view"
-            style="@style/ThickDivider"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/padding_large"
-            app:layout_constraintTop_toBottomOf="@+id/title_textview"
-            />
-
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/vanilla_profile"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:text="@string/create_profile_vanilla"
-            android:layout_marginTop="@dimen/padding_large"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/optifine_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:text="@string/create_profile_optifine"
-            android:layout_marginTop="@dimen/padding_large"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
+            <LinearLayout
+                android:id="@+id/vanilla_profile"
+                android:layout_width="0dp"
+                android:layout_height="112dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_feature_card_primary"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_menu_news"
+                    android:tint="@color/zed_accent" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/create_profile_vanilla"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_vanilla_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
 
-
-
-        <!-- Modded versions -->
+            <LinearLayout
+                android:id="@+id/optifine_profile"
+                android:layout_width="0dp"
+                android:layout_height="112dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_profile_choice_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_menu_install_jar"
+                    android:tint="@color/zed_accent" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/create_profile_optifine"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_optifine_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/title_modded_textview"
-            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/padding_extra_extra_large"
-            android:text="@string/create_profile_modded_versions"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
+            android:layout_marginTop="20dp"
+            android:letterSpacing="0.12"
+            android:text="@string/zed_profile_group_modded"
+            android:textColor="@color/zed_accent"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view_modded"
-            style="@style/ThickDivider"
-            android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/padding_large"
-            app:layout_constraintTop_toBottomOf="@+id/title_modded_textview"
-            />
-
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/modded_profile_fabric"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/modloader_dl_install_fabric" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/modded_profile_quilt"
+            <LinearLayout
+                android:id="@+id/modded_profile_fabric"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_profile_choice_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FABRIC"
+                    android:textColor="@color/zed_accent"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/modloader_dl_install_fabric"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_fabric_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/modded_profile_quilt"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_profile_choice_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="QUILT"
+                    android:textColor="@color/zed_accent"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/modloader_dl_install_quilt"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_quilt_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/modloader_dl_install_quilt" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/modded_profile_forge"
-            android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/modded_profile_forge"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_profile_choice_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FORGE"
+                    android:textColor="@color/zed_accent"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/modloader_dl_install_forge"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_forge_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/modded_profile_neoforge"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/zed_profile_choice_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NEOFORGED"
+                    android:textColor="@color/zed_accent"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/modloader_dl_install_neoforge"
+                    android:textColor="@color/zed_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/zed_profile_neoforge_desc"
+                    android:textColor="@color/zed_text_secondary"
+                    android:textSize="9sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/modloader_dl_install_forge" />
+            android:layout_marginTop="20dp"
+            android:letterSpacing="0.12"
+            android:text="@string/zed_profile_group_extra"
+            android:textColor="@color/zed_text_secondary"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/modded_profile_neoforge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/modloader_dl_install_neoforge" />
-
-        <com.kdt.mcgui.MineButton
+        <LinearLayout
             android:id="@+id/modded_profile_modpack"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/modpack_install_button" />
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/zed_profile_choice_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/modpack_install_button"
+                android:textColor="@color/zed_text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MODPACK"
+                android:textColor="@color/zed_accent"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <com.kdt.mcgui.MineButton
+        <LinearLayout
             android:id="@+id/modded_profile_lwjgl3ify"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/create_lwjgl3ify_profile" />
+            android:layout_height="58dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/zed_profile_choice_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/create_lwjgl3ify_profile"
+                android:textColor="@color/zed_text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LEGACY"
+                android:textColor="@color/zed_text_secondary"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <com.kdt.mcgui.MineButton
+        <LinearLayout
             android:id="@+id/modded_profile_bta"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_large"
-            android:text="@string/create_bta_profile" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/zed_profile_choice_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/create_bta_profile"
+                android:textColor="@color/zed_text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLASSIC"
+                android:textColor="@color/zed_text_secondary"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
-</com.kdt.DefocusableScrollView>
-
+</ScrollView>

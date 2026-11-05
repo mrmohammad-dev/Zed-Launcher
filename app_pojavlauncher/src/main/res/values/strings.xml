@@ -532,4 +532,26 @@
     <string name="angelica_found_sfpew_notice">Angelica mod found, Simple FPE Wrapper not needed</string>
     <string name="use_angle_checkbox">Use ANGLE (might help FPS)</string>
 
+    <string name="zed_custom_controls_title" translatable="false">CUSTOM CONTROLS</string>
+    <string name="zed_custom_controls_subtitle" translatable="false">Design your touch layout</string>
+    <string name="zed_game_directory_title" translatable="false">GAME DIRECTORY</string>
+    <string name="zed_game_directory_subtitle" translatable="false">Worlds, mods and resource packs</string>
+    <string name="zed_open_tool" translatable="false">OPEN CONTROL STUDIO</string>
+    <string name="zed_open_folder" translatable="false">BROWSE FILES</string>
+    <string name="zed_more_tools" translatable="false">LAUNCHER TOOLS</string>
+    <string name="zed_controls_menu" translatable="false">Open control editor menu</string>
+    <string name="zed_profile_builder_subtitle" translatable="false">Choose a clean game or a loader. Your profiles stay separate.</string>
+    <string name="zed_profile_group_vanilla" translatable="false">VANILLA &amp; PERFORMANCE</string>
+    <string name="zed_profile_group_modded" translatable="false">MODDED LOADERS</string>
+    <string name="zed_profile_group_extra" translatable="false">EXTRA PROFILES</string>
+    <string name="zed_profile_vanilla_desc" translatable="false">A clean Minecraft installation</string>
+    <string name="zed_profile_optifine_desc" translatable="false">Visual options and performance tuning</string>
+    <string name="zed_profile_fabric_desc" translatable="false">Lightweight mod loader</string>
+    <string name="zed_profile_quilt_desc" translatable="false">Community-driven mod loader</string>
+    <string name="zed_profile_forge_desc" translatable="false">The classic modding platform</string>
+    <string name="zed_profile_neoforge_desc" translatable="false">Modern Forge ecosystem</string>
+    <string name="zed_local_no_vanilla_version" translatable="false">A Local Account can install Fabric, Quilt, Forge, NeoForge or OptiFine only for a Vanilla Minecraft version already installed on this device. Install the base version first with an account that owns Minecraft: Java Edition.</string>
+    <string name="zed_local_unsupported_installer" translatable="false">This extra installer is not available for Local Accounts. Use an online profile for this installer.</string>
+    <string name="zed_local_no_matching_version" translatable="false">No compatible Vanilla version is installed for this loader. Install its base Minecraft version first with an account that owns Minecraft: Java Edition.</string>
+    <string name="zed_game_dir_create_failed" translatable="false">Zed could not create the selected game directory. Check storage access and try again.</string>
 </resources>

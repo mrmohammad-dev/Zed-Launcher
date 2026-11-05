@@ -125,6 +125,7 @@
         tools:layout_editor_absoluteX="13dp">
 
         <TextView
+            android:id="@+id/fabric_installer_retry_message"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
